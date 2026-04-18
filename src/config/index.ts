@@ -4,12 +4,7 @@ type Serverconfig = {
     PORT:number
 }
 
-function loadEnv() {
-    dotenv.config();
-    console.log('Env loaded');
-}
-
-loadEnv();
+dotenv.config();
 
 export const ServerConfig:Serverconfig = {
     PORT:Number(process.env.PORT) || 3001

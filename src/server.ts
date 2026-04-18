@@ -1,11 +1,11 @@
 import express from "express";
 import { ServerConfig } from "./config/index";
-import router from "./routers/ping.router";
+import v1Router from "./routers/v1/v1Router";
 
 
 const app = express();
 
-app.use(router);
+app.use('/api/v1',v1Router);
 
 app.listen(ServerConfig.PORT, ()=>{
     console.log('Server running on :',ServerConfig.PORT);
