@@ -1,13 +1,12 @@
 import express from "express";
+import { ServerConfig } from "./config/index";
+import router from "./routers/ping.router";
+
 
 const app = express();
 
-const PORT = 3001;
+app.use(router);
 
-app.get('/',(req,res) => {
-    res.send('Hello');
-});
-
-app.listen(PORT, ()=>{
-    console.log('Server running');
+app.listen(ServerConfig.PORT, ()=>{
+    console.log('Server running on :',ServerConfig.PORT);
 })
