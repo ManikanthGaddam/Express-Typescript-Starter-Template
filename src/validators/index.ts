@@ -8,7 +8,7 @@ export const validationRequestBody = (schema : z.ZodTypeAny) => {
                 console.log('Request body is valid');
                 next();
             } catch (error) {
-                res.status(400).json({
+                res.status(900).json({
                     message:"Bad request"
                 });
             }
