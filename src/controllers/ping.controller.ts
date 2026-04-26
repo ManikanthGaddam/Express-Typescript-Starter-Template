@@ -1,17 +1,20 @@
-import { Request, Response } from "express";
+import { NextFunction, Request, Response } from "express";
 import fs from "fs/promises"
+import { AppError } from "../utils/app.error";
 
-export const pingHandler = async(req:Request,res:Response) => {
+export const pingHandler = async(req:Request,res:Response,next:NextFunction) => {
     try {
-        const data = await fs.readFile("./src/sample.txt", "utf-8");
+        const data = await fs.readFile("./src/sample1.txt", "utf-8");
         res.status(200).json({
             success:true,
             message:data
         });
     } catch (error) {
-        res.status(500).json({
-            message:"Something went wrong",
-            success:false
-        });
+        const err : AppError = {
+            statusCode : 500,
+            message : "something went wrong",
+            name:"internal server error"
+        }
+        throw err;
     }
 }
