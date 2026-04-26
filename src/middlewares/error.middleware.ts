@@ -6,6 +6,7 @@ export const genericErrorHandler = (err:AppError,req:Request,res:Response,next:N
 
     res.status(err.statusCode).json({
         message:err.message,
-        success:false
+        success:false,
+        name:err.name
     });
 }
